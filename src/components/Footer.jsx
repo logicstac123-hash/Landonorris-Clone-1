@@ -99,7 +99,7 @@ const Footer = () => {
 
     const RollingText = ({ text }) => {
         return (
-            <div className="relative overflow-hidden h-[1.1em] flex items-center font-display font-bold italic">
+            <div className="relative overflow-hidden h-[1.1em] flex items-center font-display font-bold">
                 <div className="flex">
                     {text.split('').map((char, i) => (
                         <span key={i} className="top-char inline-block">
@@ -119,13 +119,10 @@ const Footer = () => {
     };
 
     return (
-        <footer ref={containerRef} className="relative w-full bg-ln-yellow pt-20">
-            {/* Top gradient area */}
-            <div className="absolute inset-x-0 top-0 h-48 bg-ln-yellow" />
-
+        <footer ref={containerRef} className="relative w-full p-4 pt-24 bg-gradient-to-b from-ln-cream to-ln-yellow">
             {/* Main masked container */}
             <div 
-                className="relative w-[99%] mx-auto min-h-screen flex flex-col items-center overflow-hidden mb-1 rounded-t-[4rem]"
+                className="relative w-full min-h-screen flex flex-col items-center overflow-visible rounded-t-[4rem]"
                 style={{
                     maskImage: 'url("/images/masks/footer-desktop-mask.svg")',
                     WebkitMaskImage: 'url("/images/masks/footer-desktop-mask.svg")',
@@ -133,9 +130,10 @@ const Footer = () => {
                     WebkitMaskSize: '100% 100%',
                     maskRepeat: 'no-repeat',
                     WebkitMaskRepeat: 'no-repeat',
-                    backgroundColor: '#111311'
                 }}
             >
+                {/* Dark background */}
+                <div className="absolute inset-0 bg-ln-onyx -z-10" />
                 {/* Texture layers */}
                 <div className="absolute inset-0 bg-image-noise opacity-15 mix-blend-overlay pointer-events-none" />
                 <div 
@@ -147,85 +145,83 @@ const Footer = () => {
                     }}
                 />
 
-                {/* Background figure */}
-                <div className="absolute bottom-[-2%] left-1/2 -translate-x-1/2 w-full max-w-[1340px] z-0 pointer-events-none select-none opacity-90">
+                {/* Background figure - downsized */}
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] z-10 pointer-events-none select-none">
                     <img 
                         src="/images/footer/main.webp" 
                         alt="Lando" 
-                        className="w-full h-auto object-contain brightness-90 contrast-110"
+                        className="w-full h-auto object-contain"
                     />
                 </div>
 
-                {/* Content */}
-                <div className="relative z-10 flex flex-col items-center w-full max-w-7xl px-12 pt-24 h-full flex-1">
-                    
-                    {/* Title and signature */}
-                    <div className="relative text-center mb-16 reveal-item">
-                         <img 
-                            src="/images/logos-and-signatures/signature-big.svg" 
-                            alt="" 
-                            className="footer-signature absolute -top-20 left-1/2 -translate-x-1/2 w-80 md:w-[35vw] pointer-events-none select-none z-0"
-                            style={{ 
-                                filter: 'invert(91%) sepia(94%) saturate(7446%) hue-rotate(15deg) brightness(101%) contrast(106%)',
-                                transform: 'translateX(-45%) rotate(-5deg)' 
-                            }}
-                        />
-                        <h2 className="text-white text-5xl md:text-[8.5vw] font-display font-black leading-[0.82] tracking-tighter uppercase italic z-10 relative">
-                            ALWAYS <span className="text-ln-yellow not-italic">BRINGING</span> <br />
-                            THE FIGHT.
-                        </h2>
-                    </div>
+                {/* Title and signature - repositioned and downsized */}
+                <div className="absolute top-12 left-1/2 -translate-x-1/2 w-full max-w-7xl text-center z-20">
+                     <img 
+                        src="/images/logos-and-signatures/signature-big.svg" 
+                        alt="" 
+                        className="footer-signature absolute -top-10 left-1/2 -translate-x-1/2 w-64 md:w-[25vw] pointer-events-none select-none z-0"
+                        style={{ 
+                            filter: 'invert(91%) sepia(94%) saturate(7446%) hue-rotate(15deg) brightness(101%) contrast(106%)',
+                            transform: 'translateX(-50%) rotate(-5deg)' 
+                        }}
+                    />
+                    <h2 className="text-white text-4xl md:text-6xl lg:text-7xl font-display font-black leading-[0.85] tracking-tighter uppercase z-10 relative">
+                        ALWAYS <span className="text-ln-yellow">BRINGING</span> <br />
+                        THE FIGHT.
+                    </h2>
+                </div>
 
-                    {/* Links */}
-                    <div className="w-full flex justify-between items-start mt-12 reveal-item">
+                {/* Navigation - compressed and downsized */}
+                <div className="absolute bottom-28 left-0 right-0 z-20">
+                    <div className="w-full max-w-7xl mx-auto px-12 flex justify-between items-start">
                         {/* PAGES */}
-                        <div className="flex flex-col gap-6">
-                            <span className="text-white/20 text-[10px] uppercase font-bold tracking-[0.6em] font-sans">PAGES</span>
+                        <div className="flex flex-col gap-3">
+                            <span className="text-white/20 text-[8px] uppercase font-bold tracking-[0.4em] font-sans">PAGES</span>
                             <nav className="flex flex-col gap-0 items-start">
                                 {['HOME', 'ON TRACK', 'OFF TRACK', 'CALENDAR'].map(link => (
-                                    <a key={link} href={`#${link}`} className="rolling-link text-white text-4xl md:text-[3.9vw] leading-[1.05] hover:text-ln-yellow transition-colors uppercase">
+                                    <a key={link} href={`#${link}`} className="rolling-link text-white text-2xl md:text-3xl lg:text-4xl font-display font-black leading-[1.1] hover:text-ln-yellow transition-colors uppercase">
                                         <RollingText text={link} />
                                     </a>
                                 ))}
-                                <a href="#store" className="rolling-link text-ln-yellow text-xl md:text-[1.8vw] mt-8 underline decoration-[3px] underline-offset-[12px] uppercase">
+                                <a href="#store" className="rolling-link text-ln-yellow text-lg md:text-xl font-display font-bold mt-3 underline decoration-[2px] underline-offset-[0.4rem] uppercase">
                                     <RollingText text="STORE" />
                                 </a>
                             </nav>
                         </div>
 
                          {/* FOLLOW ON */}
-                         <div className="flex flex-col gap-6 items-end text-right">
-                            <span className="text-white/20 text-[10px] uppercase font-bold tracking-[0.6em] font-sans">FOLLOW ON</span>
+                         <div className="flex flex-col gap-3 items-end text-right">
+                            <span className="text-white/20 text-[8px] uppercase font-bold tracking-[0.4em] font-sans">FOLLOW ON</span>
                             <nav className="flex flex-col gap-0 items-end">
                                 {['TIKTOK', 'INSTAGRAM', 'YOUTUBE', 'TWITCH'].map(link => (
-                                    <a key={link} href={`#${link}`} className="rolling-link text-white text-4xl md:text-[3.9vw] leading-[1.05] hover:text-ln-yellow transition-colors uppercase">
+                                    <a key={link} href={`#${link}`} className="rolling-link text-white text-2xl md:text-3xl lg:text-4xl font-display font-black leading-[1.1] hover:text-ln-yellow transition-colors uppercase">
                                         <RollingText text={link} />
                                     </a>
                                 ))}
                             </nav>
                         </div>
                     </div>
-
-                    {/* Business button */}
-                    <div className="mt-auto pt-24 pb-48 z-20 reveal-item">
-                        <button className="bg-ln-yellow text-black px-12 py-4 rounded-xl font-sans font-black text-[12px] tracking-[0.25em] flex items-center gap-3 hover:scale-110 hover:shadow-[0_0_50px_rgba(210,255,0,0.4)] transition-all duration-400 cursor-pointer">
-                            BUSINESS ENQUIRIES <span className="text-xl">⤴</span>
-                        </button>
-                    </div>
                 </div>
 
-                {/* Marquee */}
-                <div className="absolute bottom-12 w-full overflow-hidden pb-12 reveal-item">
+                {/* Business button - centered and downsized */}
+                <div className="absolute bottom-14 left-1/2 -translate-x-1/2 z-30">
+                    <button className="bg-ln-yellow text-black px-7 py-2.5 rounded-lg font-sans font-black text-[11px] tracking-wider flex items-center gap-2 hover:shadow-[0_0_2rem_rgba(210,255,0,0.3)] transition-shadow duration-400 cursor-pointer uppercase">
+                        BUSINESS ENQUIRIES <span className="text-sm">⤴</span>
+                    </button>
+                </div>
+
+                {/* Marquee - same bottom position as button, behind image, logos downsized */}
+                <div className="absolute bottom-14 w-full overflow-hidden z-5">
                     <div 
                         ref={marqueeRef}
-                        className="flex whitespace-nowrap gap-28 items-center justify-start min-w-max px-24"
+                        className="flex whitespace-nowrap gap-20 items-center justify-start min-w-max px-20"
                     >
                         {[...logos, ...logos, ...logos].map((logo, idx) => (
                             <img 
                                 key={idx} 
                                 src={logo.src} 
                                 alt={logo.alt} 
-                                className="h-4 md:h-5 object-contain opacity-20 invert grayscale brightness-[5] hover:opacity-100 transition-opacity duration-300"
+                                className="h-6 md:h-8 object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
                             />
                         ))}
                     </div>
