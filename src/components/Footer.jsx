@@ -131,7 +131,7 @@ const Footer = () => {
     };
 
     return (
-        <footer ref={containerRef} className="relative w-full p-4 pt-24 bg-gradient-to-b from-ln-cream to-ln-yellow">
+        <footer ref={containerRef} className="relative w-full pt-24 bg-gradient-to-b from-ln-cream to-ln-yellow p-4">
             {/* Main masked container */}
             <div 
                 className="relative w-full min-h-screen flex flex-col items-center overflow-visible rounded-t-[4rem]"
@@ -149,11 +149,12 @@ const Footer = () => {
                 {/* Texture layers */}
                 <div className="absolute inset-0 bg-image-noise opacity-20 mix-blend-overlay pointer-events-none" />
                 <div 
-                    className="absolute inset-0 opacity-[0.08] pointer-events-none"
+                    className="absolute inset-0 opacity-30 pointer-events-none"
                     style={{
-                        backgroundImage: 'url("/images/green-svgs/background-lines.svg")',
-                        backgroundSize: '140% auto',
+                        backgroundImage: 'url("/images/green-svgs/background-green.svg")',
+                        backgroundSize: 'cover',
                         backgroundPosition: 'center',
+                        backgroundRepeat: 'no-repeat',
                     }}
                 />
 
