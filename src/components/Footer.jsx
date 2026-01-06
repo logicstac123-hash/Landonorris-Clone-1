@@ -46,11 +46,38 @@ const Footer = () => {
             });
         }
 
-        // Rolling text animation
-        const links = containerRef.current.querySelectorAll('.rolling-link');
-        links.forEach(link => {
-            const topChars = link.querySelectorAll('.top-char');
-            const bottomChars = link.querySelectorAll('.bottom-char');
+        // Content entrance
+        gsap.from('.reveal-item', {
+            y: 40,
+            opacity: 0,
+            duration: 1.5,
+            stagger: 0.15,
+            ease: 'power4.out',
+            scrollTrigger: {
+                trigger: containerRef.current,
+                start: 'top 85%',
+            }
+        });
+        
+        // Signature float
+        gsap.to('.footer-signature', {
+            y: -15,
+            x: '+=10',
+            rotation: -2,
+            duration: 3.5,
+            repeat: -1,
+            yoyo: true,
+            ease: 'sine.inOut'
+        });
+
+    }, { scope: containerRef, dependencies: [] });
+
+    const RollingLink = ({ text, href, className = '' }) => {
+        const linkRef = useRef(null);
+        
+        useGSAP(() => {
+            const topChars = linkRef.current.querySelectorAll('.top-char');
+            const bottomChars = linkRef.current.querySelectorAll('.bottom-char');
             
             const tl = gsap.timeline({ paused: true });
             
@@ -67,39 +94,24 @@ const Footer = () => {
                 ease: 'power4.inOut'
             }, 0);
 
-            link.addEventListener('mouseenter', () => tl.play());
-            link.addEventListener('mouseleave', () => tl.reverse());
-        });
+            const onEnter = () => tl.play();
+            const onLeave = () => tl.reverse();
 
-        // Signature float
-        gsap.to('.footer-signature', {
-            y: -15,
-            x: '+=10',
-            rotation: -2,
-            duration: 3.5,
-            repeat: -1,
-            yoyo: true,
-            ease: 'sine.inOut'
-        });
+            linkRef.current.addEventListener('mouseenter', onEnter);
+            linkRef.current.addEventListener('mouseleave', onLeave);
 
-        // Content entrance
-        gsap.from('.reveal-item', {
-            y: 40,
-            opacity: 0,
-            duration: 1.5,
-            stagger: 0.15,
-            ease: 'power4.out',
-            scrollTrigger: {
-                trigger: containerRef.current,
-                start: 'top 85%',
-            }
-        });
+            return () => {
+                linkRef.current?.removeEventListener('mouseenter', onEnter);
+                linkRef.current?.removeEventListener('mouseleave', onLeave);
+            };
+        }, { scope: linkRef });
 
-    }, { scope: containerRef, dependencies: [] });
-
-    const RollingText = ({ text }) => {
         return (
-            <div className="relative overflow-hidden h-[1.1em] flex items-center font-display font-bold">
+            <a 
+                ref={linkRef}
+                href={href} 
+                className={`rolling-link relative overflow-hidden h-[1.1em] flex items-center font-display font-black uppercase ${className}`}
+            >
                 <div className="flex">
                     {text.split('').map((char, i) => (
                         <span key={i} className="top-char inline-block">
@@ -114,7 +126,7 @@ const Footer = () => {
                         </span>
                     ))}
                 </div>
-            </div>
+            </a>
         );
     };
 
@@ -132,12 +144,12 @@ const Footer = () => {
                     WebkitMaskRepeat: 'no-repeat',
                 }}
             >
-                {/* Dark background */}
-                <div className="absolute inset-0 bg-ln-onyx -z-10" />
+                {/* Deep Olive background matching reference */}
+                <div className="absolute inset-0 bg-[#1a1c16] -z-10" />
                 {/* Texture layers */}
-                <div className="absolute inset-0 bg-image-noise opacity-15 mix-blend-overlay pointer-events-none" />
+                <div className="absolute inset-0 bg-image-noise opacity-20 mix-blend-overlay pointer-events-none" />
                 <div 
-                    className="absolute inset-0 opacity-[0.06] pointer-events-none"
+                    className="absolute inset-0 opacity-[0.08] pointer-events-none"
                     style={{
                         backgroundImage: 'url("/images/green-svgs/background-lines.svg")',
                         backgroundSize: '140% auto',
@@ -154,12 +166,12 @@ const Footer = () => {
                     />
                 </div>
 
-                {/* Title and signature - repositioned and downsized */}
-                <div className="absolute top-12 left-1/2 -translate-x-1/2 w-full max-w-7xl text-center z-20">
+                {/* Title and signature - repositioned higher for better visibility */}
+                <div className="absolute top-20 left-1/2 -translate-x-1/2 w-full max-w-7xl text-center z-20">
                      <img 
                         src="/images/logos-and-signatures/signature-big.svg" 
                         alt="" 
-                        className="footer-signature absolute -top-10 left-1/2 -translate-x-1/2 w-64 md:w-[25vw] pointer-events-none select-none z-0"
+                        className="footer-signature absolute -top-12 left-1/2 -translate-x-1/2 w-64 md:w-[30vw] pointer-events-none select-none z-0"
                         style={{ 
                             filter: 'invert(91%) sepia(94%) saturate(7446%) hue-rotate(15deg) brightness(101%) contrast(106%)',
                             transform: 'translateX(-50%) rotate(-5deg)' 
@@ -167,25 +179,30 @@ const Footer = () => {
                     />
                     <h2 className="text-white text-4xl md:text-6xl lg:text-7xl font-display font-black leading-[0.85] tracking-tighter uppercase z-10 relative">
                         ALWAYS <span className="text-ln-yellow">BRINGING</span> <br />
-                        THE FIGHT.
+                        THE <span className="text-ln-yellow">FIGHT.</span>
                     </h2>
                 </div>
 
-                {/* Navigation - compressed and downsized */}
-                <div className="absolute bottom-28 left-0 right-0 z-20">
-                    <div className="w-full max-w-7xl mx-auto px-12 flex justify-between items-start">
+                {/* Navigation - vertically centered and horizontal distance refined */}
+                <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 z-20">
+                    <div className="w-full max-w-[1000px] mx-auto px-12 flex justify-between items-center">
                         {/* PAGES */}
                         <div className="flex flex-col gap-3">
                             <span className="text-white/20 text-[8px] uppercase font-bold tracking-[0.4em] font-sans">PAGES</span>
                             <nav className="flex flex-col gap-0 items-start">
                                 {['HOME', 'ON TRACK', 'OFF TRACK', 'CALENDAR'].map(link => (
-                                    <a key={link} href={`#${link}`} className="rolling-link text-white text-2xl md:text-3xl lg:text-4xl font-display font-black leading-[1.1] hover:text-ln-yellow transition-colors uppercase">
-                                        <RollingText text={link} />
-                                    </a>
+                                    <RollingLink 
+                                        key={link} 
+                                        text={link} 
+                                        href={`#${link}`} 
+                                        className="text-2xl md:text-3xl lg:text-4xl leading-[1.1]"
+                                    />
                                 ))}
-                                <a href="#store" className="rolling-link text-ln-yellow text-lg md:text-xl font-display font-bold mt-3 underline decoration-[2px] underline-offset-[0.4rem] uppercase">
-                                    <RollingText text="STORE" />
-                                </a>
+                                <RollingLink 
+                                    text="STORE" 
+                                    href="#store" 
+                                    className="text-lg md:text-xl mt-3 underline decoration-[2px] underline-offset-[0.4rem] text-ln-yellow"
+                                />
                             </nav>
                         </div>
 
@@ -194,9 +211,12 @@ const Footer = () => {
                             <span className="text-white/20 text-[8px] uppercase font-bold tracking-[0.4em] font-sans">FOLLOW ON</span>
                             <nav className="flex flex-col gap-0 items-end">
                                 {['TIKTOK', 'INSTAGRAM', 'YOUTUBE', 'TWITCH'].map(link => (
-                                    <a key={link} href={`#${link}`} className="rolling-link text-white text-2xl md:text-3xl lg:text-4xl font-display font-black leading-[1.1] hover:text-ln-yellow transition-colors uppercase">
-                                        <RollingText text={link} />
-                                    </a>
+                                    <RollingLink 
+                                        key={link} 
+                                        text={link} 
+                                        href={`#${link}`} 
+                                        className="text-2xl md:text-3xl lg:text-4xl leading-[1.1]"
+                                    />
                                 ))}
                             </nav>
                         </div>
