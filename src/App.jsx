@@ -1,9 +1,14 @@
+import Footer from './components/Footer';
 import './App.css'
 
 function App() {
 
     return (
-        <div></div>
+        <div className="min-h-screen bg-black overflow-x-hidden">
+
+            
+            <Footer />
+        </div>
     )
 }
 
