@@ -1,29 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&family=Inter:wght@300;400;600&family=Kalam:wght@700&family=DM+Serif+Display&display=swap');
 @import "tailwindcss";
 
 @font-face {
-    font-family: 'Brier Bold';
+    font-family: 'Brier';
     src: url('/fonts/Brier-Bold.woff2') format('woff2');
-    font-weight: bold;
+    font-weight: 700;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-    font-family: 'wght';
-    src: url('/fonts/wght.woff2') format('woff2');
-    font-weight: 100 900;
+    font-family: 'Mona Sans Variable';
+    src: url('/fonts/Mona-Sans.woff2') format('woff2');
+    font-weight: 200 900;
     font-style: normal;
+    font-display: swap;
 }
 
 @theme {
+    /* LN Color System - Tailwind v4 format */
     --color-ln-yellow: #D2FF00;
-    /* ... (rest of the colors) ... */
     --color-ln-dark: #101400;
     --color-ln-olive: #1a1c16;
     --color-ln-cream: #F4F4ED;
     --color-ln-gray: #1f1f1f;
-
-    /* LN standardized colors from Figma mapping */
     --color-ln-onyx: #111112;
     --color-ln-dark-gray: #535450;
     --color-ln-slate: #747282;
@@ -32,23 +31,21 @@
     --color-ln-lime: #B2C73A;
     --color-ln-sage: #B4B8A5;
     --color-ln-stone: #B9BBAD;
-    --color-ln-yellow: #D2FF00;
     --color-ln-beige: #DDE1D2;
     --color-ln-offwhite: #EFEEEC;
-    --color-ln-cream: #F4F4ED;
     --color-ln-white: #FFFFFF;
     --color-ln-deep-forest: #1F2323;
     --color-ln-forest: #282C20;
     --color-ln-moss: #343A26;
 
-    --font-sans: "wght", "Inter", "sans-serif";
-    --font-display: "Oswald", "sans-serif";
-    --font-serif: "Brier Bold", "DM Serif Display", "serif";
-    --font-script: "Kalam", "cursive";
+    /* Font families - Tailwind v4 format */
+    --font-sans: 'Mona Sans Variable';
+    --font-serif: 'Brier';
+    --font-mono: 'Mona Sans Variable';
 
-    /* Dedicated aliases */
-    --font-brier: "Brier Bold", "serif";
-    --font-wght: "wght", "sans-serif";
+    /* Custom font aliases */
+    --font-display: 'Mona Sans Variable';
+    --font-brier: 'Brier';
 
     --background-image-noise: url('/images/noise.svg');
 }
@@ -57,6 +54,9 @@
     body {
         cursor: crosshair;
         background-color: var(--color-ln-cream);
+        font-family: 'Mona Sans Variable';
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
 }
 
@@ -105,10 +105,13 @@
     }
 
     @keyframes liquid-wave {
-        0%, 100% {
+
+        0%,
+        100% {
             transform: translateY(0) scaleY(1);
             opacity: 0.1;
         }
+
         50% {
             transform: translateY(-20px) scaleY(1.1);
             opacity: 0.15;

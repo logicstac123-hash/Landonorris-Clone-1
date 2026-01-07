@@ -131,7 +131,7 @@ const Footer = () => {
     };
 
     return (
-        <footer ref={containerRef} className="relative w-full pt-24 px-4 bg-gradient-to-b from-ln-cream to-ln-yellow">
+        <footer ref={containerRef} className="relative w-full pt-24 px-4 bg-gradient-to-b from-ln-cream to-ln-yellow min-h-[800px]" >
             {/* Main masked container */}
             <div
                 className="relative w-full h-[800px] flex flex-col items-center overflow-visible rounded-t-[4rem]"
@@ -198,13 +198,13 @@ const Footer = () => {
                                         key={link}
                                         text={link}
                                         href={`#${link}`}
-                                        className="text-lg md:text-xl lg:text-2xl leading-[1.1]"
+                                        className="text-lg md:text-xl lg:text-2xl text-ln-white leading-[1.1]"
                                     />
                                 ))}
                                 <RollingLink
                                     text="STORE"
                                     href="#store"
-                                    className="text-base md:text-lg underline decoration-[2px] underline-offset-[0.4rem] text-ln-yellow"
+                                    className="text-base md:text-lg underline font-normal decoration-[2px] underline-offset-[0.4rem] text-ln-yellow"
                                 />
                             </nav>
                         </div>
@@ -218,7 +218,7 @@ const Footer = () => {
                                         key={link}
                                         text={link}
                                         href={`#${link}`}
-                                        className="text-lg md:text-xl lg:text-2xl leading-[1.1]"
+                                        className="text-lg md:text-xl lg:text-2xl text-ln-white leading-[1.1]"
                                     />
                                 ))}
                             </nav>

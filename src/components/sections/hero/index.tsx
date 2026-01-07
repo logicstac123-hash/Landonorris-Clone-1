@@ -1,13 +1,13 @@
 import React, { useRef } from 'react';
-import NextRaceCard from '../../cards/next_race_card';
-import BackgroundCurve from '../../ui/background_curve';
-import WaterRipple from '../../ui/water_ripple';
-import HeroLogo from './hero_logo';
-import HeroFloatingElements from './hero_floating_elements';
-import HeroMessage from './hero_message';
-import HeroPortrait from './hero_portrait';
-import HeroCustomCursor from './hero_custom_cursor';
-import { useHeroScrollAnimations } from './hero_scroll_animations';
+import NextRaceCard from '../../cards/next-race-card';
+import BackgroundCurve from '../../ui/background-curve';
+import WaterRipple from '../../ui/water-ripple';
+import HeroLogo from './hero-logo';
+import HeroFloatingElements from './hero-floating-elements';
+import HeroMessage from './hero-message';
+import HeroPortrait from './hero-portrait';
+import HeroCustomCursor from './hero-custom-cursor';
+import { useHeroScrollAnimations } from './hero-scroll-animations';
 
 const Hero: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -19,7 +19,7 @@ const Hero: React.FC = () => {
   return (
     <section
       ref={containerRef}
-      className="relative w-full h-screen min-h-[50rem] flex items-end justify-center overflow-hidden bg-ln-cream cursor-none"
+      className="relative w-full h-screen min-h-[50rem] flex items-end justify-center bg-ln-cream cursor-none"
     >
       {/* Animated Background Green Curve */}
       <BackgroundCurve />

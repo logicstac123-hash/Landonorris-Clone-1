@@ -23,28 +23,28 @@ export const useHeroScrollAnimations = ({ containerRef, contentRef }: HeroScroll
       delay: 0.2
     });
 
-    // Pin hero section and zoom out effect
-    ScrollTrigger.create({
-      trigger: containerRef.current,
-      start: 'top top',
-      end: '+=200%',
-      pin: true,
-      anticipatePin: 1,
-    });
+    // Pin hero section and zoom out effect - DISABLED FOR NOW
+    // ScrollTrigger.create({
+    //   trigger: containerRef.current,
+    //   start: 'top top',
+    //   end: '+=200%',
+    //   pin: true,
+    //   anticipatePin: 1,
+    // });
 
-    // Zoom out content on scroll
-    if (contentRef.current) {
-      gsap.to(contentRef.current, {
-        scale: 0.6,
-        opacity: 0.3,
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top top',
-          end: '+=200%',
-          scrub: 1,
-        }
-      });
-    }
+    // Zoom out content on scroll - DISABLED FOR NOW
+    // if (contentRef.current) {
+    //   gsap.to(contentRef.current, {
+    //     scale: 0.6,
+    //     opacity: 0.3,
+    //     scrollTrigger: {
+    //       trigger: containerRef.current,
+    //       start: 'top top',
+    //       end: '+=200%',
+    //       scrub: 1,
+    //     }
+    //   });
+    // }
 
     // Logo fade away at top
     gsap.to(".hero-center-icon", {

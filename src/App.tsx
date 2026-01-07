@@ -4,6 +4,13 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import Header from './components/layout/header';
 import Hero from './components/sections/hero/index';
+import Introduction from './components/sections/introduction';
+import HorizontalScroll from './components/sections/horizontal-scroll/index';
+import TrackMode from './components/sections/track-mode';
+import Helmets from './components/sections/helmets';
+import Shop from './components/sections/shop';
+import Partners from './components/sections/partners';
+import CTA from './components/sections/cta';
 import Footer from './components/layout/footer';
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
@@ -47,10 +54,17 @@ function App() {
                     </div>
 
                     <Header />
-                    {/* 
-                    <main className="relative z-10 w-full flex flex-col items-center">
+
+                    <main className="relative z-20 w-full flex flex-col items-center">
                         <Hero />
-                    </main> */}
+                        <Introduction />
+                        <HorizontalScroll />
+                        <TrackMode />
+                        <Helmets />
+                        <Shop />
+                        <Partners />
+                        <CTA />
+                    </main>
 
                     <Footer />
                 </div>
