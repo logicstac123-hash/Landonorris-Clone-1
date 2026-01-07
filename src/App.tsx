@@ -2,8 +2,9 @@ import { useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
-import Footer from './components/Footer';
-import './App.css';
+import Header from './components/layout/header';
+import Hero from './components/sections/hero/index';
+import Footer from './components/layout/footer';
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -36,7 +37,7 @@ function App() {
     return (
         <div id="smooth-wrapper">
             <div id="smooth-content">
-                <div className="relative w-full min-h-screen bg-black text-white overflow-x-hidden selection:bg-ln-yellow selection:text-black">
+                <div className="relative w-full min-h-screen bg-ln-cream text-ln-dark overflow-x-hidden selection:bg-ln-yellow selection:text-black">
 
                     {/* Intro Loader Overlay */}
                     <div className="loader-overlay fixed inset-0 bg-ln-yellow z-[100] flex items-center justify-center overflow-hidden">
@@ -45,9 +46,13 @@ function App() {
                         </h1>
                     </div>
 
+                    <Header />
+                    {/* 
                     <main className="relative z-10 w-full flex flex-col items-center">
-                        <Footer />
-                    </main>
+                        <Hero />
+                    </main> */}
+
+                    <Footer />
                 </div>
             </div>
         </div>
