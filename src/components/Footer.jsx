@@ -134,7 +134,7 @@ const Footer = () => {
         <footer ref={containerRef} className="relative w-full pt-24 px-4 bg-gradient-to-b from-ln-cream to-ln-yellow">
             {/* Main masked container */}
             <div
-                className="relative w-full min-h-screen flex flex-col items-center overflow-visible rounded-t-[4rem]"
+                className="relative w-full h-[800px] flex flex-col items-center overflow-visible rounded-t-[4rem]"
                 style={{
                     maskImage: 'url("/images/masks/footer-desktop-mask.svg")',
                     WebkitMaskImage: 'url("/images/masks/footer-desktop-mask.svg")',
@@ -170,9 +170,9 @@ const Footer = () => {
                 </div>
 
                 {/* Title and signature - repositioned higher for better visibility */}
-                <div className="absolute top-40 left-1/2 -translate-x-1/2 w-full max-w-7xl text-center z-20">
+                <div className="absolute top-[12rem] left-1/2 -translate-x-1/2 w-full max-w-7xl text-center z-[1]">
                     {/* Signature Wrapper - Handles Positioning */}
-                    <div className="absolute -top-24 left-1/2 -translate-x-1/2 -rotate-[5deg] w-64 md:w-[20vw] z-0 pointer-events-none select-none mix-blend-multiply opacity-80">
+                    <div className="absolute -top-24 left-1/2 -translate-x-1/2 -rotate-[5deg] w-64 md:w-[12vw] z-[-1] pointer-events-none select-none mix-blend-multiply">
                         {/* Inner Image - Handles Animation */}
                         <img
                             src="/images/footer/signature-big.svg"
@@ -180,31 +180,31 @@ const Footer = () => {
                             className="footer-signature w-full h-auto"
                         />
                     </div>
-                    <h2 className="text-white relative z-10 text-[3rem] md:text-[4rem] lg:text-[5rem] xl:text-[5.5rem] font-sans font-black leading-[0.8] tracking-[-0.04em] uppercase">
-                        ALWAYS <span className="text-ln-yellow">BRINGING</span> <br />
-                        THE <span className="text-ln-yellow">FIGHT.</span>
+                    <h2 className="text-white relative z-10 text-[3rem] md:text-[4rem] lg:text-[5rem] xl:text-[5.5rem] font-sans font-black leading-[0.8] tracking-[-0.04em] uppercase font-semibold">
+                        ALWAYS <span className="text-ln-yellow font-serif font-normal">BRINGING</span> <br />
+                        THE <span className="text-ln-yellow font-serif font-normal">FIGHT.</span>
                     </h2>
                 </div>
 
                 {/* Navigation */}
                 <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 z-20">
-                    <div className="w-full max-w-[62.5rem] mx-auto px-12 flex justify-between items-center">
+                    <div className="w-full max-w-[82.5rem] mx-auto px-12 flex justify-between items-center">
                         {/* PAGES */}
                         <div className="flex flex-col gap-3 items-center text-center">
                             <span className="text-white/20 text-[0.5rem] uppercase font-bold tracking-[0.4em] font-sans">PAGES</span>
-                            <nav className="flex flex-col gap-0 items-center">
+                            <nav className="flex flex-col gap-1 md:gap-2 items-center">
                                 {['HOME', 'ON TRACK', 'OFF TRACK', 'CALENDAR'].map(link => (
                                     <RollingLink
                                         key={link}
                                         text={link}
                                         href={`#${link}`}
-                                        className="text-2xl md:text-3xl lg:text-4xl leading-[1.1]"
+                                        className="text-lg md:text-xl lg:text-2xl leading-[1.1]"
                                     />
                                 ))}
                                 <RollingLink
                                     text="STORE"
                                     href="#store"
-                                    className="text-lg md:text-xl mt-3 underline decoration-[2px] underline-offset-[0.4rem] text-ln-yellow"
+                                    className="text-base md:text-lg underline decoration-[2px] underline-offset-[0.4rem] text-ln-yellow"
                                 />
                             </nav>
                         </div>
@@ -212,13 +212,13 @@ const Footer = () => {
                         {/* FOLLOW ON */}
                         <div className="flex flex-col gap-3 items-center text-center">
                             <span className="text-white/20 text-[0.5rem] uppercase font-bold tracking-[0.4em] font-sans">FOLLOW ON</span>
-                            <nav className="flex flex-col gap-0 items-center">
+                            <nav className="flex flex-col gap-1 md:gap-2   items-center">
                                 {['TIKTOK', 'INSTAGRAM', 'YOUTUBE', 'TWITCH'].map(link => (
                                     <RollingLink
                                         key={link}
                                         text={link}
                                         href={`#${link}`}
-                                        className="text-2xl md:text-3xl lg:text-4xl leading-[1.1]"
+                                        className="text-lg md:text-xl lg:text-2xl leading-[1.1]"
                                     />
                                 ))}
                             </nav>
@@ -252,11 +252,11 @@ const Footer = () => {
             </div>
 
             {/* Legal bar - Matching detail: tight tracking on links */}
-            <div className="relative w-full bg-ln-yellow px-14 py-8 flex flex-col md:flex-row justify-between items-center gap-4 z-30">
-                <p className="text-black text-[10px] font-bold uppercase tracking-[0.15em] font-sans opacity-75">© 2025 LANDO NORRIS. ALL RIGHTS RESERVED</p>
-                <div className="flex gap-14 font-sans">
-                    <a href="/privacy" className="text-black text-[10px] font-bold uppercase hover:underline decoration-2 underline-offset-6 opacity-75">PRIVACY POLICY</a>
-                    <a href="/terms" className="text-black text-[10px] font-bold uppercase hover:underline decoration-2 underline-offset-6 opacity-75">TERMS</a>
+            <div className="relative absolute bottom-8 w-full px-2  flex flex-col md:flex-row justify-between items-center gap-4 z-30">
+                <p className="text-black text-[8px] font-bold uppercase font-sans "> <b> © 2025 LANDO NORRIS.  </b> ALL RIGHTS RESERVED</p>
+                <div className="flex gap-2 font-sans font-extrabold text-black text-[13px] uppercase tracking-tight">
+                    <a href="/privacy" className=" uppercase ">PRIVACY POLICY</a>
+                    <a href="/terms" className=" uppercase ">TERMS</a>
                 </div>
             </div>
         </footer>

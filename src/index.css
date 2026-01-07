@@ -1,17 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&family=Inter:wght@300;400;600&family=Kalam:wght@700&family=DM+Serif+Display&display=swap');
 @import "tailwindcss";
 
 @font-face {
-    font-family: 'Brier Bold';
+    font-family: 'Brier';
     src: url('/fonts/Brier-Bold.woff2') format('woff2');
-    font-weight: bold;
+    font-weight: 700;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-    font-family: 'Mona Sans';
+    font-family: 'Mona Sans Variable';
     src: url('/fonts/Mona-Sans.woff2') format('woff2');
+    font-weight: 200 900;
     font-style: normal;
+    font-display: swap;
 }
 
 @theme {
@@ -36,13 +38,14 @@
     --color-ln-forest: #282C20;
     --color-ln-moss: #343A26;
 
-    --font-sans: "Mona Sans", "Inter", "sans-serif";
-    --font-display: "Oswald", "sans-serif";
-    --font-serif: "Brier Bold", "DM Serif Display", "serif";
-    --font-script: "Kalam", "cursive";
+    /* Tailwind v4 font family configuration - ONLY custom fonts */
+    --font-sans: 'Mona Sans Variable';
+    --font-serif: 'Brier';
+    --font-mono: 'Mona Sans Variable';
 
-    --font-brier: "Brier Bold", "serif";
-    --font-wght: "Mona Sans", "sans-serif";
+    /* Custom font aliases */
+    --font-display: 'Mona Sans Variable';
+    --font-brier: 'Brier';
 
     --background-image-noise: url('/images/noise.svg');
 }
@@ -51,6 +54,10 @@
     body {
         background-color: var(--color-ln-black);
         color: white;
+        font-family: 'Mona Sans Variable';
+        /* font-weight: 500; */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
 }
 
