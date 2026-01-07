@@ -10,7 +10,6 @@ import TrackMode from './components/sections/track-mode';
 import Helmets from './components/sections/helmets';
 import Shop from './components/sections/shop';
 import Partners from './components/sections/partners';
-import CTA from './components/sections/cta';
 import Footer from './components/layout/footer';
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
@@ -63,7 +62,6 @@ function App() {
                         <Helmets />
                         <Shop />
                         <Partners />
-                        <CTA />
                     </main>
 
                     <Footer />

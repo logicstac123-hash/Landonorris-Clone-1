@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import AnimatedTextButton from '../ui/animated_text_button';
+import AnimatedTextButton from '../ui/animated-text-button';
 
 const MenuButton: React.FC = () => {
   return (
