@@ -41,33 +41,35 @@ function App() {
     }, []);
 
     return (
-        <div id="smooth-wrapper">
-            <div id="smooth-content">
-                <div className="relative w-full min-h-screen bg-ln-cream text-ln-dark overflow-x-hidden selection:bg-ln-yellow selection:text-black">
+        <>
+            {/* Intro Loader Overlay - Outside smooth wrapper */}
+            <div className="loader-overlay fixed inset-0 bg-ln-yellow z-[100] flex items-center justify-center overflow-hidden">
+                <h1 className="font-display font-bold text-6xl md:text-9xl tracking-tighter text-black uppercase animate-pulse">
+                    LN4
+                </h1>
+            </div>
 
-                    {/* Intro Loader Overlay */}
-                    <div className="loader-overlay fixed inset-0 bg-ln-yellow z-[100] flex items-center justify-center overflow-hidden">
-                        <h1 className="font-display font-bold text-6xl md:text-9xl tracking-tighter text-black uppercase animate-pulse">
-                            LN4
-                        </h1>
+            {/* Header - Outside smooth wrapper for proper fixed positioning */}
+            <Header />
+
+            <div id="smooth-wrapper">
+                <div id="smooth-content">
+                    <div className="relative w-full min-h-screen bg-ln-cream text-ln-dark overflow-x-hidden selection:bg-ln-yellow selection:text-black">
+                        <main className="relative z-20 w-full flex flex-col items-center">
+                            <Hero />
+                            <Introduction />
+                            <HorizontalScroll />
+                            <TrackMode />
+                            <Helmets />
+                            <Shop />
+                            <Partners />
+                        </main>
+
+                        <Footer />
                     </div>
-
-                    <Header />
-
-                    <main className="relative z-20 w-full flex flex-col items-center">
-                        <Hero />
-                        <Introduction />
-                        <HorizontalScroll />
-                        <TrackMode />
-                        <Helmets />
-                        <Shop />
-                        <Partners />
-                    </main>
-
-                    <Footer />
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 
