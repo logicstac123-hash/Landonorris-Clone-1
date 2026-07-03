@@ -41,7 +41,7 @@ const Hero: React.FC = () => {
         {/* Water Ripple Effect Canvas */}
         <WaterRipple />
 
-        {/* Lando Portrait - PixiJS Displacement Effect */}
+        {/* Hero Portrait - PixiJS Displacement Effect */}
         <HeroPortrait containerRef={containerRef} />
 
         {/* Scroll Message with Signature */}

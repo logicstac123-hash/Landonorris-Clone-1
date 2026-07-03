@@ -164,7 +164,7 @@ const Footer = () => {
                 {/* <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[37.5rem] z-10 pointer-events-none select-none">
                     <img
                         src="/images/footer/main.webp"
-                        alt="Lando"
+                        alt="LogicStac"
                         className="w-full h-auto object-contain"
                     />
                 </div> */}
