@@ -48,8 +48,8 @@ const WaterRipple: React.FC<WaterRippleProps> = ({ className = '', style }) => {
       ctx.globalAlpha = 0.2;
 
       ripples.forEach((ripple, index) => {
-        ripple.radius += 2;
-        ripple.life -= 0.02;
+        ripple.radius += 3.5;
+        ripple.life -= 0.03;
 
         if (ripple.life <= 0 || ripple.radius > ripple.maxRadius) {
           ripples.splice(index, 1);
