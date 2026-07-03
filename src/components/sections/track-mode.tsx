@@ -45,12 +45,12 @@ const TrackMode: React.FC = () => {
 
           {/* Typography */}
           <div className="relative mb-12 text-center">
-            <span className="absolute -top-8 left-[40%] font-script text-6xl text-ln-yellow z-20 rotate-[-12deg] mix-blend-multiply opacity-90">On</span>
+            <span className="absolute -top-8 left-[40%] font-script text-6xl text-ln-yellow z-20 rotate-[-12deg] mix-blend-multiply opacity-90">Web</span>
             <h3 className="font-display font-bold text-7xl md:text-[8rem] leading-[0.8] tracking-tighter uppercase relative z-10">
-              Track
+              Design
             </h3>
             <p className="font-sans text-sm text-gray-600 mt-6 max-w-xs mx-auto">
-              Most recent results, career stats and photos from trackside.
+              Cutting-edge user interfaces and immersive digital experiences.
             </p>
             <div className="mt-4 flex justify-center">
               <button className="w-10 h-10 bg-ln-yellow rounded-lg flex items-center justify-center hover:scale-110 transition-transform shadow-lg">
@@ -59,15 +59,15 @@ const TrackMode: React.FC = () => {
             </div>
           </div>
 
-          {/* Image - Helmet */}
+          {/* Image - Design */}
           <div className="w-full aspect-[4/5] relative">
             <div className="absolute inset-0 bg-gray-200 rounded-sm overflow-hidden transform transition-transform duration-700 group-hover:scale-[1.02]">
-              <img src="/images/on-off-track/left.webp" loading="lazy" className="w-full h-full object-cover object-center" alt="Helmet" />
+              <img src="/images/on-off-track/left.webp" loading="lazy" className="w-full h-full object-cover object-center" alt="Design" />
             </div>
             {/* Decorative element */}
             <div className="absolute top-10 -left-10 bg-white p-2 rounded shadow-md z-20 hidden md:block">
               <div className="flex items-center gap-2">
-                <span className="text-[10px] font-bold">Lando Norris</span>
+                <span className="text-[10px] font-bold">LogicStac Studio</span>
               </div>
             </div>
           </div>
@@ -78,15 +78,15 @@ const TrackMode: React.FC = () => {
 
           {/* Typography */}
           <div className="relative mb-12 text-center">
-            <span className="absolute -top-10 left-[45%] font-script text-6xl text-ln-yellow z-20 rotate-[5deg] mix-blend-multiply opacity-90">Off</span>
+            <span className="absolute -top-10 left-[45%] font-script text-6xl text-ln-yellow z-20 rotate-[5deg] mix-blend-multiply opacity-90">App</span>
             <div className="flex flex-col items-center">
-              <span className="font-serif italic text-6xl md:text-7xl leading-none">OFF</span>
+              <span className="font-serif italic text-6xl md:text-7xl leading-none">Full</span>
               <h3 className="font-display font-bold text-7xl md:text-[8rem] leading-[0.7] tracking-tighter uppercase relative z-10">
-                Track
+                Stack
               </h3>
             </div>
             <p className="font-sans text-sm text-gray-600 mt-6 max-w-xs mx-auto">
-              Campaigns, shoots and other such promotional materials for fans.
+              Robust development and scalable architecture for modern products.
             </p>
             <div className="mt-4 flex justify-center">
               <button className="w-10 h-10 bg-ln-yellow rounded-lg flex items-center justify-center hover:scale-110 transition-transform shadow-lg">

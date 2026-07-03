@@ -25,7 +25,7 @@ const Hero: React.FC = () => {
       <BackgroundCurve />
 
       {/* Next Race Sidebar Card */}
-      <NextRaceCard className="absolute left-[3rem] bottom-[4rem] z-20 hidden lg:block" />
+      {/* <NextRaceCard className="absolute left-[3rem] bottom-[4rem] z-20 hidden lg:block" /> */}
 
       {/* Top Center Logo */}
       <HeroLogo />

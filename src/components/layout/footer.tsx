@@ -161,28 +161,28 @@ const Footer = () => {
                 />
 
                 {/* Background figure - downsized with rem max-width */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[37.5rem] z-10 pointer-events-none select-none">
+                {/* <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[37.5rem] z-10 pointer-events-none select-none">
                     <img
                         src="/images/footer/main.webp"
                         alt="Lando"
                         className="w-full h-auto object-contain"
                     />
-                </div>
+                </div> */}
 
                 {/* Title and signature - repositioned higher for better visibility */}
                 <div className="absolute top-[12rem] left-1/2 -translate-x-1/2 w-full max-w-7xl text-center z-[1]">
                     {/* Signature Wrapper - Handles Positioning */}
                     <div className="absolute -top-24 left-1/2 -translate-x-1/2 -rotate-[5deg] w-64 md:w-[12vw] z-[-1] pointer-events-none select-none mix-blend-multiply">
                         {/* Inner Image - Handles Animation */}
-                        <img
+                        {/* <img
                             src="/images/footer/signature-big.svg"
                             alt=""
                             className="footer-signature w-full h-auto"
-                        />
+                        /> */}
                     </div>
                     <h2 className="text-white relative z-10 text-[3rem] md:text-[4rem] lg:text-[5rem] xl:text-[5.5rem] font-sans font-black leading-[0.8] tracking-[-0.04em] uppercase font-semibold">
-                        ALWAYS <span className="text-ln-yellow font-serif font-normal">BRINGING</span> <br />
-                        THE <span className="text-ln-yellow font-serif font-normal">FIGHT.</span>
+                        CRAFTING <span className="text-ln-yellow font-serif font-normal">DIGITAL</span> <br />
+                        <span className="text-ln-yellow font-serif font-normal">EXCELLENCE.</span>
                     </h2>
                 </div>
 
@@ -193,7 +193,7 @@ const Footer = () => {
                         <div className="flex flex-col gap-3 items-center text-center">
                             <span className="text-white/20 text-[0.5rem] uppercase font-bold tracking-[0.4em] font-sans">PAGES</span>
                             <nav className="flex flex-col gap-1 md:gap-2 items-center">
-                                {['HOME', 'ON TRACK', 'OFF TRACK', 'CALENDAR'].map(link => (
+                                {['HOME', 'SERVICES', 'PORTFOLIO', 'ABOUT'].map(link => (
                                     <RollingLink
                                         key={link}
                                         text={link}
@@ -202,8 +202,8 @@ const Footer = () => {
                                     />
                                 ))}
                                 <RollingLink
-                                    text="STORE"
-                                    href="#store"
+                                    text="CONTACT"
+                                    href="#contact"
                                     className="text-base md:text-lg underline font-normal decoration-[2px] underline-offset-[0.4rem] text-ln-yellow"
                                 />
                             </nav>
@@ -229,7 +229,7 @@ const Footer = () => {
                 {/* Business button - centered and downsized */}
                 <div className="absolute bottom-14 left-1/2 -translate-x-1/2 z-30">
                     <button className="bg-ln-yellow text-black px-7 py-2.5 rounded-lg font-sans font-black text-[0.6875rem] tracking-wider flex items-center gap-2 hover:shadow-[0_0_2rem_rgba(210,255,0,0.3)] transition-shadow duration-400 cursor-pointer uppercase">
-                        BUSINESS ENQUIRIES <span className="text-sm">⤴</span>
+                        START A PROJECT <span className="text-sm">⤴</span>
                     </button>
                 </div>
 
@@ -253,7 +253,7 @@ const Footer = () => {
 
             {/* Legal bar - Matching detail: tight tracking on links */}
             <div className="relative absolute bottom-8 w-full px-2  flex flex-col md:flex-row justify-between items-center gap-4 z-30">
-                <p className="text-black text-[8px] font-bold uppercase font-sans "> <b> © 2025 LANDO NORRIS.  </b> ALL RIGHTS RESERVED</p>
+                <p className="text-black text-[8px] font-bold uppercase font-sans "> <b> © 2025 LOGICSTAC.  </b> ALL RIGHTS RESERVED</p>
                 <div className="flex gap-2 font-sans font-extrabold text-black text-[13px] uppercase tracking-tight">
                     <a href="/privacy" className=" uppercase ">PRIVACY POLICY</a>
                     <a href="/terms" className=" uppercase ">TERMS</a>

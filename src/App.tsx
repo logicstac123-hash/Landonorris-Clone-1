@@ -44,8 +44,8 @@ function App() {
         <>
             {/* Intro Loader Overlay - Outside smooth wrapper */}
             <div className="loader-overlay fixed inset-0 bg-ln-yellow z-[100] flex items-center justify-center overflow-hidden">
-                <h1 className="font-display font-bold text-6xl md:text-9xl tracking-tighter text-black uppercase animate-pulse">
-                    LN4
+                <h1 className="font-display font-bold text-6xl md:text-[6rem] lg:text-[8rem] tracking-tighter text-black uppercase animate-pulse">
+                    LogicStac
                 </h1>
             </div>
 

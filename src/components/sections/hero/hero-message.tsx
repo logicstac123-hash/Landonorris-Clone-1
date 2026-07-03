@@ -67,17 +67,11 @@ const HeroMessage: React.FC<HeroMessageProps> = ({ containerRef }) => {
     >
       <div className="text-center">
         <h2 className="font-display font-bold text-4xl md:text-6xl lg:text-8xl uppercase leading-[0.9] tracking-tighter text-ln-deep-forest mb-4">
-          Always <span className="text-ln-yellow italic font-serif lowercase">Bringing</span>
+          Crafting <span className="text-ln-yellow italic font-serif lowercase">Digital</span>
           <br />
-          The <span className="text-ln-deep-forest">Fight.</span>
+          <span className="text-ln-deep-forest">Excellence.</span>
         </h2>
       </div>
-      <img
-        ref={signatureRef}
-        src="/images/logos-and-signatures/signature.svg"
-        alt="Lando Norris Signature"
-        className="w-[10rem] md:w-[14rem] h-auto opacity-0"
-      />
     </div>
   );
 };
