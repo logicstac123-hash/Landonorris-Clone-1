@@ -32,7 +32,7 @@ const HorizontalScroll: React.FC = () => {
           trigger: sectionRef.current,
           start: "top top",
           end: () => `+=${getScrollDistance()}`,
-          scrub: 1,
+          scrub: 0.5,
           pin: sectionRef.current,
           invalidateOnRefresh: true,
         },

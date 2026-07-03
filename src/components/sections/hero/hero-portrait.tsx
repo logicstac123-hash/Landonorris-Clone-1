@@ -74,23 +74,23 @@ const HeroPortrait: React.FC<HeroPortraitProps> = ({ containerRef }) => {
       let targetY = 0;
       let waveOffset = 0;
 
-      // Continuous liquid wave animation - more subtle
+      // Continuous liquid wave animation
       const animateLiquid = () => {
-        waveOffset += 0.015; // Slower
+        waveOffset += 0.025; // Faster
         
-        // Subtle wave patterns
-        const wave1X = Math.sin(waveOffset) * 8; // Reduced from 20
-        const wave1Y = Math.cos(waveOffset * 0.7) * 6; // Reduced from 15
-        const wave2X = Math.sin(waveOffset * 1.3) * 5; // Reduced from 12
-        const wave2Y = Math.cos(waveOffset * 0.9) * 4; // Reduced from 10
+        // Dynamic wave patterns
+        const wave1X = Math.sin(waveOffset) * 12;
+        const wave1Y = Math.cos(waveOffset * 0.7) * 9;
+        const wave2X = Math.sin(waveOffset * 1.3) * 8;
+        const wave2Y = Math.cos(waveOffset * 0.9) * 6;
         
         // Combine mouse position with waves
         const finalX = targetX + wave1X + wave2X;
         const finalY = targetY + wave1Y + wave2Y;
         
-        // Smooth interpolation for liquid feel
-        displacementFilter.scale.x += (finalX - displacementFilter.scale.x) * 0.08; // Slower interpolation
-        displacementFilter.scale.y += (finalY - displacementFilter.scale.y) * 0.08;
+        // Faster interpolation for more responsive feel
+        displacementFilter.scale.x += (finalX - displacementFilter.scale.x) * 0.15;
+        displacementFilter.scale.y += (finalY - displacementFilter.scale.y) * 0.15;
       };
 
       // Use GSAP ticker instead of requestAnimationFrame

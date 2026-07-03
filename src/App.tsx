@@ -19,7 +19,7 @@ function App() {
     useEffect(() => {
         // Create ScrollSmoother instance
         const smoother = ScrollSmoother.create({
-            smooth: 1.2,
+            smooth: 0.8,
             effects: true,
             smoothTouch: 0.1,
         });
@@ -34,7 +34,7 @@ function App() {
         const tl = gsap.timeline();
         tl.to('.loader-overlay', {
             height: 0,
-            duration: 1.2,
+            duration: 0.8,
             ease: 'power4.inOut',
             delay: 0.2
         });
