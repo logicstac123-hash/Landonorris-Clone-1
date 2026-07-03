@@ -45,12 +45,12 @@ const Helmets: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24">
           <div className="relative">
             <h2 className="font-display font-bold text-6xl md:text-8xl tracking-tighter uppercase leading-none">
-              Helmets<br />
-              <span className="text-ln-yellow font-serif font-normal italic lowercase">Hall of Fame</span>
+              Project<br />
+              <span className="text-ln-yellow font-serif font-normal italic lowercase">Showcase</span>
             </h2>
           </div>
           <div className="max-w-md mt-8 md:mt-0 text-gray-400 text-sm font-sans border-l border-gray-700 pl-6">
-            <p>From his iconic blobs to innovative one-off designs, Lando has always been passionate about designing innovative and memorable helmets.</p>
+            <p>A collection of our finest work, spanning web applications, brand identities, and digital marketing campaigns.</p>
           </div>
         </div>
 
@@ -95,11 +95,11 @@ const Helmets: React.FC = () => {
           </div>
 
           <h3 className="font-serif text-3xl md:text-4xl text-white mb-8">
-            See more helmets and highlights<br />from Lando on the track
+            Ready to build something<br />extraordinary together?
           </h3>
 
           <button className="group bg-ln-yellow text-black px-8 py-3 rounded-sm font-bold uppercase text-xs tracking-widest hover:bg-white transition-all duration-300 flex items-center gap-2 hover:scale-105 hover:shadow-2xl">
-            View On Track <ArrowUpRight size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            Start a Project <ArrowUpRight size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
           </button>
         </div>
       </div>

@@ -138,10 +138,10 @@ const Header: React.FC = () => {
                 <div ref={logoRef} className="flex-shrink-0 pointer-events-auto leading-[0.85]">
                     <a href="/" className="flex flex-col items-start group">
                         <span className="font-serif mix-blend-difference text-ln-deep-forest group-hover:text-ln-black transition-all duration-300 uppercase tracking-tight text-[1.9rem] md:text-[2.3rem]">
-                            LANDO
+                            LOGIC
                         </span>
                         <span className="font-sans font-black text-ln-deep-forest group-hover:text-ln-black transition-all duration-300 uppercase tracking-tight text-[1.9rem] md:text-[2.3rem]">
-                            NORRIS
+                            STAC
                         </span>
                     </a>
                 </div>
@@ -149,12 +149,10 @@ const Header: React.FC = () => {
                 {/* Right Actions */}
                 <div ref={actionsRef} className="flex items-center gap-[0.9rem] pointer-events-auto">
                     <AnimatedTextButton
-                        text="Store"
-                        href="https://store.landonorris.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        text="Contact"
+                        href="#contact"
                         icon="/images/logos-icons/cart.svg"
-                        iconAlt="Cart"
+                        iconAlt="Contact"
                         className="store-button group flex items-center gap-[0.55rem] bg-ln-yellow text-ln-deep-forest px-[1.6rem] md:px-[2rem] py-[0.95rem] md:py-[1.1rem] font-sans font-black uppercase tracking-tight hover:brightness-105 hover:scale-105 active:scale-95 transition-all duration-300 rounded-[0.6rem] shadow-none border-none"
                         iconClassName="store-button-icon w-[1.2rem] h-[1.2rem]"
                         textClassName="store-button-text text-[0.95rem] md:text-[1.05rem]"

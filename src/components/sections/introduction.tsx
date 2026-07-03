@@ -77,19 +77,18 @@ const Introduction: React.FC = () => {
 
           <h2 className="text-5xl md:text-7xl lg:text-[7rem] leading-[0.85] tracking-tight uppercase max-w-[95%] md:max-w-[90%] lg:max-w-[85%] mx-auto font-display font-bold">
             {(() => {
-              const fullText = "Redefining Limits, Fighting for Wins, Bringing It All In All Ways. Defining A Legacy in Formula 1 On And Off The Track.";
               let letterIndex = 0;
               const parts = [
-                { text: "Redefining", className: "font-serif text-ln-yellow font-normal normal-case italic mr-4" },
-                { text: "Limits,", className: "stroke-text" },
-                { text: "\nFighting for ", className: "" },
-                { text: "Wins,", className: "text-ln-yellow" },
-                { text: "\nBringing It All In ", className: "" },
-                { text: "\nAll Ways. Defining A ", className: "" },
-                { text: "Legacy", className: "text-ln-yellow font-serif font-normal normal-case italic" },
-                { text: " in Formula 1 ", className: "" },
-                { text: "\nOn And Off The ", className: "" },
-                { text: "Track.", className: "" },
+                { text: "Designing", className: "font-serif text-ln-yellow font-normal normal-case italic mr-4" },
+                { text: "Future,", className: "stroke-text" },
+                { text: "\nBuilding for ", className: "" },
+                { text: "Scale,", className: "text-ln-yellow" },
+                { text: "\nDelivering High ", className: "" },
+                { text: "\nImpact Solutions. Shaping A ", className: "" },
+                { text: "Digital", className: "text-ln-yellow font-serif font-normal normal-case italic" },
+                { text: " World ", className: "" },
+                { text: "\nOne Pixel At A ", className: "" },
+                { text: "Time.", className: "" },
               ];
 
               return parts.map((part, partIndex) => {
@@ -118,13 +117,6 @@ const Introduction: React.FC = () => {
               });
             })()}
           </h2>
-
-          {/* Rive Animated Signature - Center */}
-          <div className="mt-16 w-full flex justify-center">
-            <div className="w-[300px] md:w-[400px] h-[100px] md:h-[150px] relative">
-              {RiveComponent && <RiveComponent className="w-full h-full" />}
-            </div>
-          </div>
         </div>
 
       </div>
