@@ -69,6 +69,7 @@ const HorizontalScroll: React.FC = () => {
 
   return (
     <section
+      id="portfolio"
       ref={sectionRef}
       className="relative w-full bg-ln-dark text-ln-cream py-24 lg:py-0 overflow-hidden"
     >

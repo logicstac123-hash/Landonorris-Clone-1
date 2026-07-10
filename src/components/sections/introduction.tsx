@@ -48,7 +48,7 @@ const Introduction: React.FC = () => {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="relative w-full bg-ln-dark text-ln-cream py-24 px-4 overflow-hidden">
+    <section id="services" ref={containerRef} className="relative w-full bg-ln-dark text-ln-cream py-24 px-4 overflow-hidden">
       {/* Animated Background Green Curve - Same as Hero */}
       <BackgroundCurve opacity={15} className="opacity-15" />
 
