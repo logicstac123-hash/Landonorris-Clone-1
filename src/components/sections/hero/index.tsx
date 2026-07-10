@@ -18,6 +18,7 @@ const Hero: React.FC = () => {
 
   return (
     <section
+      id="home"
       ref={containerRef}
       className="relative w-full h-screen min-h-[50rem] flex items-end justify-center bg-ln-cream cursor-none"
     >
@@ -52,4 +53,3 @@ const Hero: React.FC = () => {
 };
 
 export default Hero;
-

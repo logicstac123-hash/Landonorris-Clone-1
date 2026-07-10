@@ -59,17 +59,6 @@ const Footer = () => {
             }
         });
 
-        // Signature float
-        // gsap.to('.footer-signature', {
-        //     y: -15,
-        //     x: '+=10',
-        //     rotation: -2,
-        //     duration: 3.5,
-        //     repeat: -1,
-        //     yoyo: true,
-        //     ease: 'sine.inOut'
-        // });
-
     }, { scope: containerRef, dependencies: [] });
 
     const RollingLink = ({ text, href, className = '' }) => {
@@ -131,7 +120,7 @@ const Footer = () => {
     };
 
     return (
-        <footer ref={containerRef} className="relative w-full pt-24 px-4 bg-gradient-to-b from-ln-cream to-ln-yellow min-h-[800px]" >
+        <footer id="contact" ref={containerRef} className="relative w-full pt-24 px-4 bg-gradient-to-b from-ln-cream to-ln-yellow min-h-[800px]" >
             {/* Main masked container */}
             <div
                 className="relative w-full h-[800px] flex flex-col items-center overflow-visible rounded-t-[4rem]"
@@ -160,25 +149,9 @@ const Footer = () => {
                     }}
                 />
 
-                {/* Background figure - downsized with rem max-width */}
-                {/* <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[37.5rem] z-10 pointer-events-none select-none">
-                    <img
-                        src="/images/footer/main.webp"
-                        alt="Lando"
-                        className="w-full h-auto object-contain"
-                    />
-                </div> */}
-
                 {/* Title and signature - repositioned higher for better visibility */}
                 <div className="absolute top-[12rem] left-1/2 -translate-x-1/2 w-full max-w-7xl text-center z-[1]">
-                    {/* Signature Wrapper - Handles Positioning */}
                     <div className="absolute -top-24 left-1/2 -translate-x-1/2 -rotate-[5deg] w-64 md:w-[12vw] z-[-1] pointer-events-none select-none mix-blend-multiply">
-                        {/* Inner Image - Handles Animation */}
-                        {/* <img
-                            src="/images/footer/signature-big.svg"
-                            alt=""
-                            className="footer-signature w-full h-auto"
-                        /> */}
                     </div>
                     <h2 className="text-white relative z-10 text-[3rem] md:text-[4rem] lg:text-[5rem] xl:text-[5.5rem] font-sans font-black leading-[0.8] tracking-[-0.04em] uppercase font-semibold">
                         CRAFTING <span className="text-ln-yellow font-serif font-normal">DIGITAL</span> <br />
@@ -197,7 +170,7 @@ const Footer = () => {
                                     <RollingLink
                                         key={link}
                                         text={link}
-                                        href={`#${link}`}
+                                        href={`#${link.toLowerCase()}`}
                                         className="text-lg md:text-xl lg:text-2xl text-ln-white leading-[1.1]"
                                     />
                                 ))}
@@ -228,7 +201,16 @@ const Footer = () => {
 
                 {/* Business button - centered and downsized */}
                 <div className="absolute bottom-14 left-1/2 -translate-x-1/2 z-30">
-                    <button className="bg-ln-yellow text-black px-7 py-2.5 rounded-lg font-sans font-black text-[0.6875rem] tracking-wider flex items-center gap-2 hover:shadow-[0_0_2rem_rgba(210,255,0,0.3)] transition-shadow duration-400 cursor-pointer uppercase">
+                    <button
+                        onClick={() => {
+                            const smoother = (window as any).gsap?.ScrollTrigger?.get() || null;
+                            const contactElement = document.getElementById('contact');
+                            if (contactElement) {
+                                contactElement.scrollIntoView({ behavior: 'smooth' });
+                            }
+                        }}
+                        className="bg-ln-yellow text-black px-7 py-2.5 rounded-lg font-sans font-black text-[0.6875rem] tracking-wider flex items-center gap-2 hover:shadow-[0_0_2rem_rgba(210,255,0,0.3)] transition-shadow duration-400 cursor-pointer uppercase border-none"
+                    >
                         START A PROJECT <span className="text-sm">⤴</span>
                     </button>
                 </div>
