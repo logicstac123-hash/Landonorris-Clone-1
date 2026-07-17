@@ -120,7 +120,7 @@ const Footer = () => {
     };
 
     return (
-        <footer id="contact" ref={containerRef} className="relative w-full pt-24 px-4 bg-gradient-to-b from-ln-cream to-ln-yellow min-h-[800px]" >
+        <footer id="contact" className="relative w-full pt-24 px-4 bg-gradient-to-b from-ln-cream to-ln-yellow min-h-[800px]" >
             {/* Main masked container */}
             <div
                 className="relative w-full h-[800px] flex flex-col items-center overflow-visible rounded-t-[4rem]"
@@ -166,17 +166,17 @@ const Footer = () => {
                         <div className="flex flex-col gap-3 items-center text-center">
                             <span className="text-white/20 text-[0.5rem] uppercase font-bold tracking-[0.4em] font-sans">PAGES</span>
                             <nav className="flex flex-col gap-1 md:gap-2 items-center">
-                                {['HOME', 'SERVICES', 'PORTFOLIO', 'ABOUT'].map(link => (
+                                {['HOME', 'SERVICES', 'PORTFOLIO', 'PRICING'].map(link => (
                                     <RollingLink
                                         key={link}
                                         text={link}
-                                        href={`#${link.toLowerCase()}`}
+                                        href={`#${link === 'PORTFOLIO' ? 'showcase' : link.toLowerCase()}`}
                                         className="text-lg md:text-xl lg:text-2xl text-ln-white leading-[1.1]"
                                     />
                                 ))}
                                 <RollingLink
                                     text="CONTACT"
-                                    href="#contact"
+                                    href="#contact-form"
                                     className="text-base md:text-lg underline font-normal decoration-[2px] underline-offset-[0.4rem] text-ln-yellow"
                                 />
                             </nav>
@@ -203,8 +203,7 @@ const Footer = () => {
                 <div className="absolute bottom-14 left-1/2 -translate-x-1/2 z-30">
                     <button
                         onClick={() => {
-                            const smoother = (window as any).gsap?.ScrollTrigger?.get() || null;
-                            const contactElement = document.getElementById('contact');
+                            const contactElement = document.getElementById('contact-form');
                             if (contactElement) {
                                 contactElement.scrollIntoView({ behavior: 'smooth' });
                             }

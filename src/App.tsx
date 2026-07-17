@@ -8,7 +8,8 @@ import Introduction from './components/sections/introduction';
 import HorizontalScroll from './components/sections/horizontal-scroll/index';
 import TrackMode from './components/sections/track-mode';
 import Helmets from './components/sections/helmets';
-import Shop from './components/sections/shop';
+import Pricing from './components/sections/pricing';
+import ContactForm from './components/sections/contact-form';
 import Partners from './components/sections/partners';
 import Footer from './components/layout/footer';
 
@@ -61,7 +62,8 @@ function App() {
                             <HorizontalScroll />
                             <TrackMode />
                             <Helmets />
-                            <Shop />
+                            <Pricing />
+                            <ContactForm />
                             <Partners />
                         </main>
 

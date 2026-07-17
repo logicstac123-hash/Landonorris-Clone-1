@@ -29,7 +29,7 @@ const projects: Project[] = [
     id: 2,
     name: 'Vibrant Token Design',
     year: '2025',
-    category: 'Branding & Systems',
+    category: 'Branding',
     img: '/images/drewverse/design_7.png',
     tech: ['Figma', 'Style Dictionary', 'Tailwind CSS'],
     description: 'An enterprise-grade design token system and component library compiled for a leading global fintech. Ensures design consistency across mobile, web, and desktop channels while accelerating development velocity by 300%.',
@@ -39,7 +39,7 @@ const projects: Project[] = [
     id: 3,
     name: 'Dark Glassmorphic UI',
     year: '2025',
-    category: 'SaaS Dashboard',
+    category: 'UI/UX Design',
     img: '/images/drewverse/design_8.png',
     tech: ['Next.js', 'GraphQL', 'Tailwind v4'],
     description: 'A comprehensive monitoring console designed to track microservice health and telemetry in real-time. Features gorgeous glassmorphism, responsive canvas charts, and extremely clean dark aesthetic patterns.',
@@ -49,7 +49,7 @@ const projects: Project[] = [
     id: 4,
     name: 'Interactive 3D Showroom',
     year: '2024',
-    category: 'Creative Tech',
+    category: 'Immersive 3D',
     img: '/images/drewverse/design_9.png',
     tech: ['Three.js', 'Vite', 'GLSL Shaders'],
     description: 'A highly immersive 3D digital showroom for presenting luxury consumer goods online. Implements custom fragment shaders to replicate physical material properties and lighting under real-time controls.',
@@ -59,7 +59,7 @@ const projects: Project[] = [
     id: 5,
     name: 'AI Vector Art Generator',
     year: '2024',
-    category: 'AI Tooling',
+    category: 'Creative Tech',
     img: '/images/drewverse/design_10.png',
     tech: ['Python', 'PyTorch', 'React.js'],
     description: 'A breakthrough generative design tool that translates natural language prompts into clean, scalable SVG vector art assets. Built with specialized post-processing nodes to eliminate intersecting path anomalies.',
@@ -79,7 +79,7 @@ const projects: Project[] = [
     id: 7,
     name: 'Fluid Motion Design Hub',
     year: '2023',
-    category: 'Motion & Web',
+    category: 'Creative Tech',
     img: '/images/drewverse/photo_1.jpg',
     tech: ['Lottie', 'After Effects', 'Webflow'],
     description: 'An awards-nominated interactive web experience highlighting cutting-edge portfolio items. Blends parallax scrolling, smooth lottie integrations, and bespoke micro-interactions to maximize user session depth.',
@@ -89,7 +89,7 @@ const projects: Project[] = [
     id: 8,
     name: 'Chrome Accessibility Auditor',
     year: '2023',
-    category: 'Developer Utility',
+    category: 'Web Engineering',
     img: '/images/drewverse/photo_2.jpg',
     tech: ['TypeScript', 'Chrome Extension API', 'CSS Grid'],
     description: 'A developer browser extension that crawls active layouts and dynamically audits them for color contrast, screen-reader readiness, and layout responsiveness against strict WCAG AAA guidelines.',
@@ -99,7 +99,7 @@ const projects: Project[] = [
     id: 9,
     name: 'Liquid Interactive Canvas',
     year: '2023',
-    category: 'Creative WebGL',
+    category: 'Immersive 3D',
     img: '/images/drewverse/design_6.png',
     tech: ['PixiJS', 'GSAP Physics', 'Vite'],
     description: 'An experimental micro-site highlighting interactive liquid fluid simulation. Built to test displacement filtering in heavily loaded render pipes, achieving butter-smooth performance across mobile platforms.',
@@ -107,10 +107,15 @@ const projects: Project[] = [
   },
 ];
 
+const categories = ['All', 'UI/UX Design', 'Branding', 'Immersive 3D', 'Web Engineering', 'Creative Tech'];
+
 const Helmets: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<(HTMLDivElement | null)[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [filteredProjects, setFilteredProjects] = useState<Project[]>(projects);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
   const modalRef = useRef<HTMLDivElement>(null);
   const modalBgRef = useRef<HTMLDivElement>(null);
   const modalContentRef = useRef<HTMLDivElement>(null);
@@ -132,6 +137,49 @@ const Helmets: React.FC = () => {
 
     return () => ctx.revert();
   }, []);
+
+  // Smooth Category Filter Animation with GSAP
+  const handleCategorySelect = (category: string) => {
+    setSelectedCategory(category);
+
+    // Animate out existing grid items
+    const visibleCards = gridRef.current.filter(el => el !== null);
+    gsap.to(visibleCards, {
+      scale: 0.8,
+      opacity: 0,
+      duration: 0.3,
+      stagger: 0.05,
+      ease: 'power2.in',
+      onComplete: () => {
+        // Filter elements
+        if (category === 'All') {
+          setFilteredProjects(projects);
+        } else {
+          setFilteredProjects(projects.filter(p => p.category === category));
+        }
+      }
+    });
+  };
+
+  // Animate grid items in when filtered list updates
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const visibleCards = gridRef.current.filter(el => el !== null);
+      if (visibleCards.length > 0) {
+        gsap.fromTo(visibleCards,
+          { scale: 0.8, opacity: 0 },
+          {
+            scale: 1,
+            opacity: 1,
+            duration: 0.5,
+            stagger: 0.05,
+            ease: 'back.out(1.2)',
+          }
+        );
+      }
+    }, 50);
+    return () => clearTimeout(timer);
+  }, [filteredProjects]);
 
   // Modal animations with GSAP
   useEffect(() => {
@@ -179,7 +227,7 @@ const Helmets: React.FC = () => {
       <div className="max-w-[1400px] mx-auto">
 
         {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20">
           <div className="relative">
             <h2 className="font-display font-bold text-6xl md:text-8xl tracking-tighter uppercase leading-none">
               Project<br />
@@ -191,11 +239,31 @@ const Helmets: React.FC = () => {
           </div>
         </div>
 
+        {/* Animated Filter Bar */}
+        <div className="flex flex-wrap gap-2.5 mb-16 border-b border-gray-800 pb-8">
+          {categories.map((cat, i) => {
+            const isSelected = selectedCategory === cat;
+            return (
+              <button
+                key={i}
+                onClick={() => handleCategorySelect(cat)}
+                className={`px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 border cursor-pointer ${
+                  isSelected
+                    ? 'bg-ln-yellow text-black border-ln-yellow font-black shadow-lg hover:scale-105'
+                    : 'bg-transparent border-gray-800 text-gray-400 hover:border-gray-600 hover:text-white'
+                }`}
+              >
+                {cat}
+              </button>
+            );
+          })}
+        </div>
+
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-gray-800">
-          {projects.map((project, idx) => (
+          {filteredProjects.map((project, idx) => (
             <div
-              key={idx}
+              key={project.id}
               ref={el => { gridRef.current[idx] = el }}
               onClick={() => setSelectedProject(project)}
               className="relative aspect-square border-r border-b border-gray-800 group overflow-hidden cursor-pointer bg-ln-dark hover:bg-gradient-to-br hover:from-ln-dark hover:to-gray-900 transition-all duration-500">
@@ -251,7 +319,6 @@ const Helmets: React.FC = () => {
 
           <button
             onClick={() => {
-              const smoother = (window as any).gsap?.ScrollTrigger?.get() || null;
               const contactElement = document.getElementById('contact');
               if (contactElement) {
                 contactElement.scrollIntoView({ behavior: 'smooth' });
