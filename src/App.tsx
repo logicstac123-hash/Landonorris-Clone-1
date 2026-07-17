@@ -12,6 +12,7 @@ import Pricing from './components/sections/pricing';
 import ContactForm from './components/sections/contact-form';
 import Partners from './components/sections/partners';
 import Footer from './components/layout/footer';
+import RaceCard from './components/cards/race-card';
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -52,6 +53,9 @@ function App() {
 
             {/* Header - Outside smooth wrapper for proper fixed positioning */}
             <Header />
+
+            {/* Global Fixed Floating Status Card (rebranded McLaren track badge) */}
+            <RaceCard />
 
             <div id="smooth-wrapper">
                 <div id="smooth-content">
