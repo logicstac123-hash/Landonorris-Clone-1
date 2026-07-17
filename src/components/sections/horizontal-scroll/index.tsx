@@ -138,12 +138,6 @@ const HorizontalScroll: React.FC = () => {
               <p className="font-serif text-2xl lg:text-3xl leading-tight text-ln-cream mb-4">
                 It doesn't matter <span className="italic font-bold">where</span> you start, it's <span className="italic font-bold">how</span> you progress from there.
               </p>
-              <img
-                src="/images/logos-and-signatures/signature.svg"
-                loading="lazy"
-                className="w-32 mx-auto invert opacity-80"
-                alt="Signature"
-              />
             </div>
 
             {/* Scattered Images */}

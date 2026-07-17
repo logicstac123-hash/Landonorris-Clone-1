@@ -1,175 +1,75 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
-import * as PIXI from 'pixi.js';
 
 interface HeroPortraitProps {
   containerRef: React.RefObject<HTMLDivElement>;
 }
 
 const HeroPortrait: React.FC<HeroPortraitProps> = ({ containerRef }) => {
-  const canvasRef = useRef<HTMLDivElement>(null);
-  const appRef = useRef<PIXI.Application | null>(null);
-  const initializedRef = useRef<boolean>(false);
-  const [imagesLoaded, setImagesLoaded] = useState<boolean>(false);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    if (!containerRef.current || !canvasRef.current || initializedRef.current) return;
-    if (appRef.current) return; // Already initialized
+    if (!containerRef.current || !wrapperRef.current || !imgRef.current) return;
 
-    initializedRef.current = true;
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let animationFrameId: number;
 
-    // PixiJS 3D Depth Map Effect
-    let app: PIXI.Application | null = null;
-    let cleanupFn: (() => void) | null = null;
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = containerRef.current!.getBoundingClientRect();
+      const { clientX, clientY } = e;
 
-    const initPixi = async () => {
+      // Normalize values between -0.5 and 0.5
+      const normX = (clientX - rect.left) / rect.width - 0.5;
+      const normY = (clientY - rect.top) / rect.height - 0.5;
 
-      app = new PIXI.Application();
-      appRef.current = app;
-      await app.init({
-        antialias: true,
-        backgroundAlpha: 0,
-        resizeTo: canvasRef.current || undefined,
-        width: 1200,
-        height: 1200,
-      });
-
-      if (canvasRef.current && app.canvas && !canvasRef.current.contains(app.canvas)) {
-        canvasRef.current.appendChild(app.canvas);
-      }
-
-      const diffuseTex = await PIXI.Assets.load('/images/drewverse/hero_portrait.png');
-      const depthTex = await PIXI.Assets.load('/images/drewverse/hero_portrait.png');
-
-      const container = new PIXI.Container();
-      app.stage.addChild(container);
-
-      const diffuseSprite = new PIXI.Sprite(diffuseTex);
-      const depthSprite = new PIXI.Sprite(depthTex);
-
-      // Aspect ratio handling - increased scale for wider image
-      const scale = (app.renderer.height * 0.9) / diffuseSprite.height;
-      diffuseSprite.scale.set(scale);
-      depthSprite.scale.set(scale);
-
-      diffuseSprite.anchor.set(0.5, 0.95);
-      depthSprite.anchor.set(0.5, 0.95);
-      diffuseSprite.x = app.renderer.width / 2;
-      diffuseSprite.y = app.renderer.height;
-      depthSprite.x = app.renderer.width / 2;
-      depthSprite.y = app.renderer.height;
-
-      container.addChild(diffuseSprite);
-      container.addChild(depthSprite);
-
-      const displacementFilter = new PIXI.DisplacementFilter({
-        sprite: depthSprite,
-        scale: { x: 0, y: 0 }
-      });
-
-      diffuseSprite.filters = [displacementFilter];
-
-      let targetX = 0;
-      let targetY = 0;
-      let waveOffset = 0;
-
-      // Continuous liquid wave animation
-      const animateLiquid = () => {
-        waveOffset += 0.025; // Faster
-        
-        // Dynamic wave patterns
-        const wave1X = Math.sin(waveOffset) * 12;
-        const wave1Y = Math.cos(waveOffset * 0.7) * 9;
-        const wave2X = Math.sin(waveOffset * 1.3) * 8;
-        const wave2Y = Math.cos(waveOffset * 0.9) * 6;
-        
-        // Combine mouse position with waves
-        const finalX = targetX + wave1X + wave2X;
-        const finalY = targetY + wave1Y + wave2Y;
-        
-        // Faster interpolation for more responsive feel
-        displacementFilter.scale.x += (finalX - displacementFilter.scale.x) * 0.15;
-        displacementFilter.scale.y += (finalY - displacementFilter.scale.y) * 0.15;
-      };
-
-      // Use GSAP ticker instead of requestAnimationFrame
-      gsap.ticker.add(animateLiquid);
-
-      const handleMouseMove = (e: MouseEvent) => {
-        if (!containerRef.current) return;
-        
-        const rect = containerRef.current.getBoundingClientRect();
-        const { clientX, clientY } = e;
-        
-        // Calculate target position - more subtle movement
-        targetX = ((clientX - rect.left) / rect.width - 0.5) * 40; // Reduced from 80
-        targetY = ((clientY - rect.top) / rect.height - 0.5) * 25; // Reduced from 50
-      };
-
-      // Add subtle ripple effect on mouse click
-      const handleMouseClick = (e: MouseEvent) => {
-        if (!containerRef.current) return;
-        
-        const rect = containerRef.current.getBoundingClientRect();
-        const { clientX, clientY } = e;
-        const clickX = ((clientX - rect.left) / rect.width - 0.5) * 40;
-        const clickY = ((clientY - rect.top) / rect.height - 0.5) * 25;
-        
-        // Create subtle ripple effect
-        gsap.fromTo(displacementFilter.scale,
-          {
-            x: clickX,
-            y: clickY,
-          },
-          {
-            x: clickX + 15, // Reduced from 30
-            y: clickY + 15, // Reduced from 30
-            duration: 0.8,
-            ease: 'power2.out',
-            yoyo: true,
-            repeat: 1,
-          }
-        );
-      };
-
-      // Add event listeners
-      if (containerRef.current) {
-        containerRef.current.addEventListener('mousemove', handleMouseMove);
-        containerRef.current.addEventListener('click', handleMouseClick);
-      }
-      setImagesLoaded(true);
-
-      cleanupFn = () => {
-        gsap.ticker.remove(animateLiquid);
-        if (containerRef.current) {
-          containerRef.current.removeEventListener('mousemove', handleMouseMove);
-          containerRef.current.removeEventListener('click', handleMouseClick);
-        }
-        if (app) {
-          app.destroy(true, { children: true, texture: true });
-          appRef.current = null;
-          initializedRef.current = false;
-        }
-      };
+      // Subtle range of motion (pixels)
+      targetX = normX * 35;
+      targetY = normY * 20;
     };
 
-    initPixi();
+    const updateParallax = () => {
+      // Smooth interpolation (lerp)
+      currentX += (targetX - currentX) * 0.08;
+      currentY += (targetY - currentY) * 0.08;
+
+      if (imgRef.current) {
+        gsap.set(imgRef.current, {
+          x: currentX,
+          y: currentY,
+          rotationY: currentX * 0.15,
+          rotationX: -currentY * 0.15,
+          transformPerspective: 1000,
+        });
+      }
+
+      animationFrameId = requestAnimationFrame(updateParallax);
+    };
+
+    containerRef.current.addEventListener('mousemove', handleMouseMove);
+    updateParallax();
 
     return () => {
-      if (cleanupFn) cleanupFn();
+      if (containerRef.current) {
+        containerRef.current.removeEventListener('mousemove', handleMouseMove);
+      }
+      cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [containerRef]);
 
   return (
-    <div className="relative z-20 h-full flex items-end w-full max-w-[100rem]">
-      <div
-        ref={canvasRef}
-        className="w-full h-full flex items-end justify-center select-none pointer-events-none"
+    <div ref={wrapperRef} className="relative z-20 h-full flex items-end justify-center w-full max-w-[100rem] overflow-hidden pointer-events-none">
+      <img
+        ref={imgRef}
+        src="/images/drewverse/hero_portrait.png"
+        alt="Drewverse Hero Portrait"
+        className="h-[85%] max-h-[85vh] object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] select-none will-change-transform"
       />
     </div>
   );
 };
 
 export default HeroPortrait;
-

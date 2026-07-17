@@ -20,7 +20,7 @@ const projects: Project[] = [
     name: 'Spatial UI Workspace',
     year: '2025',
     category: 'UI/UX Design',
-    img: '/images/drewverse/design_6.png',
+    img: '/images/drewverse/design_6_nobg.png',
     tech: ['React Three Fiber', 'GSAP', 'Framer Motion'],
     description: 'A futuristic spatial user interface designed for luxury smart-home controllers. Built using custom physics engines and 3D web rendering to deliver a fluid, reactive environment that makes device control feel organic.',
     client: 'Lumina Home Systems'
@@ -80,7 +80,7 @@ const projects: Project[] = [
     name: 'Fluid Motion Design Hub',
     year: '2023',
     category: 'Motion & Web',
-    img: '/images/drewverse/design_6.png',
+    img: '/images/drewverse/photo_1.jpg',
     tech: ['Lottie', 'After Effects', 'Webflow'],
     description: 'An awards-nominated interactive web experience highlighting cutting-edge portfolio items. Blends parallax scrolling, smooth lottie integrations, and bespoke micro-interactions to maximize user session depth.',
     client: 'Vortex Venture Group'
@@ -90,7 +90,7 @@ const projects: Project[] = [
     name: 'Chrome Accessibility Auditor',
     year: '2023',
     category: 'Developer Utility',
-    img: '/images/drewverse/design_7.png',
+    img: '/images/drewverse/photo_2.jpg',
     tech: ['TypeScript', 'Chrome Extension API', 'CSS Grid'],
     description: 'A developer browser extension that crawls active layouts and dynamically audits them for color contrast, screen-reader readiness, and layout responsiveness against strict WCAG AAA guidelines.',
     client: 'AccessibleWeb Initiative'
@@ -100,7 +100,7 @@ const projects: Project[] = [
     name: 'Liquid Interactive Canvas',
     year: '2023',
     category: 'Creative WebGL',
-    img: '/images/drewverse/design_8.png',
+    img: '/images/drewverse/design_6.png',
     tech: ['PixiJS', 'GSAP Physics', 'Vite'],
     description: 'An experimental micro-site highlighting interactive liquid fluid simulation. Built to test displacement filtering in heavily loaded render pipes, achieving butter-smooth performance across mobile platforms.',
     client: 'Sonder Digital Labs'
