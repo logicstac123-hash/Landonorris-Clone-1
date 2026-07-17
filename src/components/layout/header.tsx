@@ -384,7 +384,7 @@ const Header: React.FC = () => {
             {/* FULL-SCREEN NAVIGATION OVERLAY DRAWER */}
             <div
                 ref={menuOverlayRef}
-                className="fixed inset-0 z-40 hidden flex-col justify-between p-8 md:p-16 pointer-events-auto"
+                className="fixed inset-0 z-40 hidden flex-col justify-between p-8 md:p-16 pointer-events-auto overflow-y-auto no-scrollbar"
             >
                 {/* Background color block with noise mask */}
                 <div

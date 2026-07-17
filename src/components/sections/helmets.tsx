@@ -240,7 +240,7 @@ const Helmets: React.FC = () => {
         </div>
 
         {/* Animated Filter Bar */}
-        <div className="flex flex-wrap gap-2.5 mb-16 border-b border-gray-800 pb-8">
+        <div className="flex overflow-x-auto md:flex-wrap gap-2.5 mb-16 border-b border-gray-800 pb-8 no-scrollbar scrollbar-none">
           {categories.map((cat, i) => {
             const isSelected = selectedCategory === cat;
             return (
@@ -346,15 +346,15 @@ const Helmets: React.FC = () => {
         {/* Modal content container */}
         <div
           ref={modalContentRef}
-          className="relative w-full max-w-4xl bg-[#151713] border border-gray-800 rounded-2xl overflow-hidden shadow-2xl z-10 flex flex-col md:flex-row min-h-[400px] md:h-[550px] pointer-events-auto select-text text-white"
+          className="relative w-full max-w-4xl bg-[#151713] border border-gray-800 rounded-2xl overflow-y-auto md:overflow-hidden shadow-2xl z-10 flex flex-col md:flex-row max-h-[92vh] md:h-[550px] pointer-events-auto select-text text-white no-scrollbar"
         >
           {/* Image Pane */}
-          <div className="w-full md:w-1/2 bg-ln-dark/80 p-8 flex items-center justify-center border-b md:border-b-0 md:border-r border-gray-800 relative group">
+          <div className="w-full md:w-1/2 bg-ln-dark/80 p-8 flex items-center justify-center border-b md:border-b-0 md:border-r border-gray-800 relative group min-h-[220px] md:min-h-0 flex-shrink-0">
             <div className="absolute inset-0 bg-image-noise opacity-10 pointer-events-none" />
             <img
               src={selectedProject?.img}
               alt={selectedProject?.name}
-              className="max-h-[250px] md:max-h-[380px] object-contain drop-shadow-2xl transition-transform duration-500 group-hover:scale-105"
+              className="max-h-[180px] md:max-h-[380px] object-contain drop-shadow-2xl transition-transform duration-500 group-hover:scale-105"
             />
             <span className="absolute top-4 left-4 text-[10px] font-mono uppercase bg-white/5 px-2.5 py-1 rounded-full border border-white/10 text-gray-400">
               {selectedProject?.category}
@@ -362,7 +362,7 @@ const Helmets: React.FC = () => {
           </div>
 
           {/* Details Pane */}
-          <div className="w-full md:w-1/2 p-8 md:p-10 flex flex-col justify-between overflow-y-auto max-h-[450px] md:max-h-full">
+          <div className="w-full md:w-1/2 p-8 md:p-10 flex flex-col justify-between overflow-y-auto md:overflow-y-auto max-h-none md:max-h-full flex-grow">
             {/* Upper half details */}
             <div>
               <div className="flex items-center justify-between mb-4">
