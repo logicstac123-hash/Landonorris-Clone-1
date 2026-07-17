@@ -39,8 +39,8 @@ const HeroPortrait: React.FC<HeroPortraitProps> = ({ containerRef }) => {
         canvasRef.current.appendChild(app.canvas);
       }
 
-      const diffuseTex = await PIXI.Assets.load('/images/hero/diffuse.webp');
-      const depthTex = await PIXI.Assets.load('/images/hero/depth.webp');
+      const diffuseTex = await PIXI.Assets.load('/images/drewverse/hero_portrait.png');
+      const depthTex = await PIXI.Assets.load('/images/drewverse/hero_portrait.png');
 
       const container = new PIXI.Container();
       app.stage.addChild(container);
@@ -49,12 +49,12 @@ const HeroPortrait: React.FC<HeroPortraitProps> = ({ containerRef }) => {
       const depthSprite = new PIXI.Sprite(depthTex);
 
       // Aspect ratio handling - increased scale for wider image
-      const scale = (app.renderer.height * 1.1) / diffuseSprite.height;
+      const scale = (app.renderer.height * 0.9) / diffuseSprite.height;
       diffuseSprite.scale.set(scale);
       depthSprite.scale.set(scale);
 
-      diffuseSprite.anchor.set(0.5, 1);
-      depthSprite.anchor.set(0.5, 1);
+      diffuseSprite.anchor.set(0.5, 0.95);
+      depthSprite.anchor.set(0.5, 0.95);
       diffuseSprite.x = app.renderer.width / 2;
       diffuseSprite.y = app.renderer.height;
       depthSprite.x = app.renderer.width / 2;
