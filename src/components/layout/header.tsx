@@ -182,7 +182,7 @@ const Header: React.FC = () => {
             }, 0);
 
         // Active section trigger tracking across scroll
-        ['#home', '#services', '#showcase', '#contact'].forEach((id) => {
+        ['#home', '#services', '#showcase', '#pricing', '#contact-form'].forEach((id) => {
             ScrollTrigger.create({
                 trigger: id,
                 start: 'top 35%',
@@ -335,7 +335,8 @@ const Header: React.FC = () => {
                         { label: 'Home', target: '#home' },
                         { label: 'Services', target: '#services' },
                         { label: 'Showcase', target: '#showcase' },
-                        { label: 'Contact', target: '#contact' },
+                        { label: 'Pricing', target: '#pricing' },
+                        { label: 'Contact', target: '#contact-form' },
                     ].map((item, idx) => (
                         <a
                             key={idx}
@@ -362,10 +363,10 @@ const Header: React.FC = () => {
                 <div ref={actionsRef} className="flex items-center gap-[0.9rem] pointer-events-auto">
                     <AnimatedTextButton
                         text="Contact"
-                        href="#contact"
+                        href="#contact-form"
                         onClick={(e) => {
                             e.preventDefault();
-                            handleScrollTo('#contact');
+                            handleScrollTo('#contact-form');
                         }}
                         icon="/images/logos-icons/cart.svg"
                         iconAlt="Contact"
@@ -433,7 +434,8 @@ const Header: React.FC = () => {
                         <RollingDrawerLink number="01" text="HOME" href="#home" />
                         <RollingDrawerLink number="02" text="SERVICES" href="#services" />
                         <RollingDrawerLink number="03" text="PORTFOLIO" href="#showcase" />
-                        <RollingDrawerLink number="04" text="CONTACT" href="#contact" />
+                        <RollingDrawerLink number="04" text="PRICING" href="#pricing" />
+                        <RollingDrawerLink number="05" text="CONTACT" href="#contact-form" />
                     </div>
 
                     {/* Meta info columns */}
