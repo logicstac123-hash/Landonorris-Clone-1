@@ -60,9 +60,9 @@ const TrackMode: React.FC = () => {
           </div>
 
           {/* Image - Design */}
-          <div className="w-full aspect-[4/5] relative">
+          <div className="w-full aspect-[1.68] relative">
             <div className="absolute inset-0 bg-gray-200 rounded-sm overflow-hidden transform transition-transform duration-700 group-hover:scale-[1.02]">
-              <img src="/images/drewverse/photo_1.jpg" loading="lazy" className="w-full h-full object-cover object-center" alt="Design" />
+              <img src="/images/drewverse/photo_1.jpg" loading="lazy" className="w-full h-full object-contain" alt="Design" />
             </div>
             {/* Decorative element */}
             <div className="absolute top-10 -left-10 bg-white p-2 rounded shadow-md z-20 hidden md:block">
@@ -96,9 +96,9 @@ const TrackMode: React.FC = () => {
           </div>
 
           {/* Image - Lifestyle */}
-          <div className="w-full aspect-[4/5] relative">
+          <div className="w-full aspect-[1.25] relative">
             <div className="absolute inset-0 bg-gray-200 rounded-sm overflow-hidden transform transition-transform duration-700 group-hover:scale-[1.02]">
-              <img src="/images/drewverse/photo_2.jpg" loading="lazy" className="w-full h-full object-cover object-top" alt="Lifestyle" />
+              <img src="/images/drewverse/photo_2.jpg" loading="lazy" className="w-full h-full object-contain" alt="Lifestyle" />
             </div>
           </div>
 
